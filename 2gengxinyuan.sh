@@ -25,4 +25,8 @@ vi CentOS-Base.repo
 yum clean all
 yum makecache
 yum update
+reboot
 
+rpm -q kernel
+yum remove kernel-old
+reboot
