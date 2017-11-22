@@ -1,9 +1,14 @@
 #!/bin/bash
 cd /etc/sysconfig/network-scripts/
-vi ifcfg-eno1
-#change ONBOOT=yes
-#add HWADDR=macvalue macvalue=xxx addr link/ether:xxx
-#myserver's mac d0:50:99:c8:59:ae
+echo "IPADDR=192.168.0.105" >> ifcfg-eth0
+echo "NETMASK=255.255.255.0" >> ifcfg-eth0
+echo "GATEWAY=192.168.0.1" >> ifcfg-eth0
+echo "DNS1=192.168.0.1" >> ifcfg-eth0
+vi ifcfg-eth0
+#BOOTPROTO=static
+#ONBOOT=yes
+
+systemctl start network.service
 systemctl enable NetworkManager-wait-online.service#wether this unneed?
 reboot
 ping www.taobao.com
